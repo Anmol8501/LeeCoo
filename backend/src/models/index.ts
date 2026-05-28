@@ -1,0 +1,22 @@
+// Barrel export for all TypeORM entities
+export { User } from './User';
+export { Topic } from './Topic';
+export { Subtopic } from './Subtopic';
+export { UserSubtopicProgress } from './UserSubtopicProgress';
+export { Question } from './Question';
+export { TestCase } from './TestCase';
+export { Submission } from './Submission';
+export { SolvedQuestion } from './SolvedQuestion';
+export { Sheet } from './Sheet';
+export { SheetQuestion } from './SheetQuestion';
+export { Classroom } from './Classroom';
+export { ClassroomStudent } from './ClassroomStudent';
+export { Assignment } from './Assignment';
+export { AssignmentQuestion } from './AssignmentQuestion';
+export { Contest } from './Contest';
+export { ContestQuestion } from './ContestQuestion';
+export { ContestSubmission } from './ContestSubmission';
+export { ContestLeaderboard } from './ContestLeaderboard';
+export { ClassroomMessage } from './ClassroomMessage';
+export { AIChatHistory } from './AIChatHistory';
+export { UserActivity } from './UserActivity';
