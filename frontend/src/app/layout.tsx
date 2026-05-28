@@ -19,6 +19,8 @@ export const metadata: Metadata = {
   authors: [{ name: "CodeLearn Team" }],
 };
 
+import { ThemeProvider } from "@/context/ThemeContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,10 +29,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-[#07090e] text-[#f1f5f9] font-sans antialiased selection:bg-indigo-500/30 selection:text-indigo-200">
-        {children}
+      <body className="min-h-full flex flex-col bg-[#f8fafc] dark:bg-[#f8fafc] dark:bg-[#0f1419] text-slate-900 dark:text-slate-900 dark:text-[#f0f9ff] font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-200 transition-colors duration-300">
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

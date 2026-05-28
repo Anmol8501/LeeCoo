@@ -33,6 +33,6 @@ export function difficultyColor(difficulty: string): string {
     case 'easy': return 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20';
     case 'medium': return 'text-amber-400 bg-amber-500/10 border-amber-500/20';
     case 'hard': return 'text-red-400 bg-red-500/10 border-red-500/20';
-    default: return 'text-slate-400 bg-slate-500/10 border-slate-500/20';
+    default: return 'text-slate-500 dark:text-slate-400 bg-slate-500/10 border-slate-500/20';
   }
 }

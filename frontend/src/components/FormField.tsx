@@ -23,8 +23,8 @@ export const FormField: React.FC<FormFieldProps> = ({
       </label>
       <input
         id={id}
-        className={`w-full px-3.5 py-2 bg-slate-900/60 border ${
-          error ? 'border-red-500/80 focus:ring-red-500/20' : 'border-slate-800 focus:border-purple-500/60 focus:ring-purple-500/20'
+        className={`w-full px-3.5 py-2 bg-white/60 dark:bg-[#1a2332]/60 border ${
+          error ? 'border-red-500/80 focus:ring-red-500/20' : 'border-slate-200 dark:border-[#10b981]/20 focus:border-emerald-500/60 focus:ring-emerald-500/20'
         } rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-4 transition duration-200 backdrop-blur-sm ${className}`}
         {...props}
       />

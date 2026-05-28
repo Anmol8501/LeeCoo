@@ -175,29 +175,29 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-[#f8fafc] dark:bg-[#0f1419] flex flex-col items-center justify-center p-4">
       {/* Background Gradients */}
-      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-purple-500/10 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[350px] h-[350px] bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[350px] h-[350px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="w-full max-w-md bg-slate-900/40 border border-slate-900 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-xl relative z-10">
+      <div className="w-full max-w-md bg-white/40 dark:bg-[#1a2332]/40 border border-slate-200 dark:border-[#10b981]/30 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-xl relative z-10">
         <div className="text-center mb-6">
-          <h1 className="text-3xl font-extrabold text-white tracking-tight bg-gradient-to-r from-purple-400 via-indigo-200 to-indigo-400 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-extrabold text-white tracking-tight bg-gradient-to-r from-emerald-400 via-emerald-200 to-emerald-400 bg-clip-text text-transparent">
             Create Account
           </h1>
-          <p className="text-sm text-slate-400 mt-2">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
             Join CodeLearn and start programming
           </p>
         </div>
 
         {/* Role Selector Tabs */}
-        <div className="grid grid-cols-2 p-1 bg-slate-950 rounded-lg mb-6 border border-slate-900">
+        <div className="grid grid-cols-2 p-1 bg-[#f8fafc] dark:bg-[#0f1419] rounded-lg mb-6 border border-slate-200 dark:border-[#10b981]/30">
           <button
             type="button"
             className={`py-1.5 text-sm font-medium rounded-md transition duration-200 ${
               role === 'student'
-                ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-gradient-to-r from-emerald-600 to-emerald-600 text-white shadow-md'
+                : 'text-slate-500 dark:text-slate-400 hover:text-slate-200'
             }`}
             onClick={() => handleRoleChange('student')}
           >
@@ -207,8 +207,8 @@ export default function SignupPage() {
             type="button"
             className={`py-1.5 text-sm font-medium rounded-md transition duration-200 ${
               role === 'teacher'
-                ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-gradient-to-r from-emerald-600 to-emerald-600 text-white shadow-md'
+                : 'text-slate-500 dark:text-slate-400 hover:text-slate-200'
             }`}
             onClick={() => handleRoleChange('teacher')}
           >
@@ -268,18 +268,18 @@ export default function SignupPage() {
             <select
               id="department"
               name="department"
-              className={`w-full px-3.5 py-2 bg-slate-900/60 border ${
+              className={`w-full px-3.5 py-2 bg-white/60 dark:bg-[#1a2332]/60 border ${
                 formErrors.department
                   ? 'border-red-500/80 focus:ring-red-500/20'
-                  : 'border-slate-800 focus:border-purple-500/60 focus:ring-purple-500/20'
+                  : 'border-slate-200 dark:border-[#10b981]/20 focus:border-emerald-500/60 focus:ring-emerald-500/20'
               } rounded-lg text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-4 transition duration-200 backdrop-blur-sm`}
               value={formData.department}
               onChange={handleInputChange}
               required
             >
-              <option value="" disabled className="bg-slate-950 text-slate-500">Select department</option>
+              <option value="" disabled className="bg-[#f8fafc] dark:bg-[#0f1419] text-slate-500">Select department</option>
               {DEPARTMENTS.map((dept) => (
-                <option key={dept.value} value={dept.value} className="bg-slate-950 text-slate-200">
+                <option key={dept.value} value={dept.value} className="bg-[#f8fafc] dark:bg-[#0f1419] text-slate-200">
                   {dept.label} ({dept.value})
                 </option>
               ))}
@@ -317,10 +317,10 @@ export default function SignupPage() {
 
           {/* Terms checkbox */}
           <div className="flex flex-col">
-            <label className="flex items-start gap-2.5 cursor-pointer text-slate-400 select-none text-xs">
+            <label className="flex items-start gap-2.5 cursor-pointer text-slate-500 dark:text-slate-400 select-none text-xs">
               <input
                 type="checkbox"
-                className="mt-0.5 rounded border-slate-800 bg-slate-900 text-purple-600 focus:ring-purple-500 focus:ring-offset-slate-900 cursor-pointer"
+                className="mt-0.5 rounded border-slate-200 dark:border-[#10b981]/20 bg-white dark:bg-[#1a2332] text-emerald-600 focus:ring-emerald-500 focus:ring-offset-slate-900 cursor-pointer"
                 checked={isTermsAccepted}
                 onChange={(e) => {
                   setIsTermsAccepted(e.target.checked);
@@ -335,9 +335,9 @@ export default function SignupPage() {
               />
               <span>
                 I agree to the{' '}
-                <span className="text-purple-400 hover:text-purple-300 font-medium">Terms of Service</span>{' '}
+                <span className="text-emerald-400 hover:text-emerald-300 font-medium">Terms of Service</span>{' '}
                 and{' '}
-                <span className="text-purple-400 hover:text-purple-300 font-medium">Privacy Policy</span>.
+                <span className="text-emerald-400 hover:text-emerald-300 font-medium">Privacy Policy</span>.
               </span>
             </label>
             {formErrors.terms && (
@@ -350,9 +350,9 @@ export default function SignupPage() {
           </LoadingButton>
         </form>
 
-        <p className="text-center text-sm text-slate-400 mt-6">
+        <p className="text-center text-sm text-slate-500 dark:text-slate-400 mt-6">
           Already have an account?{' '}
-          <Link href="/login" className="text-purple-400 hover:text-purple-300 font-semibold transition duration-200">
+          <Link href="/login" className="text-emerald-400 hover:text-emerald-300 font-semibold transition duration-200">
             Log In
           </Link>
         </p>

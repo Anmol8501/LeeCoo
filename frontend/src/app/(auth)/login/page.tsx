@@ -83,17 +83,17 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-[#f8fafc] dark:bg-[#0f1419] flex flex-col items-center justify-center p-4">
       {/* Background Gradients */}
-      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-purple-500/10 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[350px] h-[350px] bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[350px] h-[350px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="w-full max-w-md bg-slate-900/40 border border-slate-900 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-xl relative z-10">
+      <div className="w-full max-w-md bg-white/40 dark:bg-[#1a2332]/40 border border-slate-200 dark:border-[#10b981]/30 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-xl relative z-10">
         <div className="text-center mb-6">
-          <h1 className="text-3xl font-extrabold text-white tracking-tight bg-gradient-to-r from-purple-400 via-indigo-200 to-indigo-400 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-extrabold text-white tracking-tight bg-gradient-to-r from-emerald-400 via-emerald-200 to-emerald-400 bg-clip-text text-transparent">
             Welcome Back
           </h1>
-          <p className="text-sm text-slate-400 mt-2">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
             Log in to your CodeLearn account
           </p>
         </div>
@@ -126,7 +126,7 @@ export default function LoginPage() {
           />
 
           <div className="flex justify-end text-xs mb-2">
-            <span className="text-purple-400 hover:text-purple-300 font-medium cursor-pointer transition duration-200">
+            <span className="text-emerald-400 hover:text-emerald-300 font-medium cursor-pointer transition duration-200">
               Forgot Password?
             </span>
           </div>
@@ -136,9 +136,9 @@ export default function LoginPage() {
           </LoadingButton>
         </form>
 
-        <p className="text-center text-sm text-slate-400 mt-6">
+        <p className="text-center text-sm text-slate-500 dark:text-slate-400 mt-6">
           Don't have an account?{' '}
-          <Link href="/signup" className="text-purple-400 hover:text-purple-300 font-semibold transition duration-200">
+          <Link href="/signup" className="text-emerald-400 hover:text-emerald-300 font-semibold transition duration-200">
             Sign Up
           </Link>
         </p>

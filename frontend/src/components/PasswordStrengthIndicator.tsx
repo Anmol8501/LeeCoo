@@ -40,10 +40,10 @@ export const PasswordStrengthIndicator: React.FC<PasswordStrengthIndicatorProps>
       {password && (
         <div className="mb-2">
           <div className="flex justify-between items-center mb-1">
-            <span className="text-slate-400">Strength:</span>
+            <span className="text-slate-500 dark:text-slate-400">Strength:</span>
             <span className={`font-semibold ${textClass}`}>{label}</span>
           </div>
-          <div className="grid grid-cols-4 gap-1 h-1 bg-slate-800 rounded overflow-hidden">
+          <div className="grid grid-cols-4 gap-1 h-1 bg-white dark:bg-[#1a2332] rounded overflow-hidden">
             {[1, 2, 3, 4].map((i) => (
               <div
                 key={i}
@@ -55,7 +55,7 @@ export const PasswordStrengthIndicator: React.FC<PasswordStrengthIndicatorProps>
           </div>
         </div>
       )}
-      <ul className="space-y-1 mt-2 text-slate-400">
+      <ul className="space-y-1 mt-2 text-slate-500 dark:text-slate-400">
         {checks.map((check, index) => {
           const isPassed = check.regex.test(password);
           return (
