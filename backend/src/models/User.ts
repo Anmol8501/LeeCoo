@@ -4,7 +4,12 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
+import { Classroom } from './Classroom';
+import { ClassroomStudent } from './ClassroomStudent';
+import { Submission } from './Submission';
+import { SolvedQuestion } from './SolvedQuestion';
 
 export type UserRole = 'student' | 'teacher' | 'admin';
 
@@ -52,4 +57,16 @@ export class User {
 
   @Column({ type: 'boolean', default: true })
   is_active!: boolean;
+
+  @OneToMany(() => Classroom, (c) => c.teacher)
+  classrooms_created!: Classroom[];
+
+  @OneToMany(() => ClassroomStudent, (cs) => cs.student)
+  classroom_students!: ClassroomStudent[];
+
+  @OneToMany(() => Submission, (s) => s.user)
+  submissions!: Submission[];
+
+  @OneToMany(() => SolvedQuestion, (sq) => sq.user)
+  solved_questions!: SolvedQuestion[];
 }

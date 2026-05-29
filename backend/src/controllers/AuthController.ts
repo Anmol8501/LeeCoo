@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { AuthService } from '../services/AuthService';
 import { RegisterBody, LoginBody, RefreshBody } from '../types/auth.types';
-import { AppError } from '../middleware/errorHandler';
+import { AppError, ValidationError } from '../middleware/errorHandler';
 
 export class AuthController {
   /**
@@ -17,12 +17,12 @@ export class AuthController {
       const { name, email, password, roll_no, department, role } = req.body;
 
       if (!name || !email || !password) {
-        throw new AppError('Name, email, and password are required.', 400);
+        throw new ValidationError('Name, email, and password are required.');
       }
 
       // Check if student role is trying to register without roll number
       if (role === 'student' && !roll_no) {
-        throw new AppError('Roll number is required for students.', 400);
+        throw new ValidationError('Roll number is required for students.');
       }
 
       const result = await AuthService.register({
@@ -57,7 +57,7 @@ export class AuthController {
       const { email, password } = req.body;
 
       if (!email || !password) {
-        throw new AppError('Email and password are required.', 400);
+        throw new ValidationError('Email and password are required.');
       }
 
       const result = await AuthService.login(email, password);
@@ -85,7 +85,7 @@ export class AuthController {
       const { refreshToken } = req.body;
 
       if (!refreshToken) {
-        throw new AppError('Refresh token is required.', 400);
+        throw new ValidationError('Refresh token is required.');
       }
 
       const result = await AuthService.refreshAccessToken(refreshToken);

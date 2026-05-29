@@ -13,6 +13,30 @@ export class AppError extends Error {
   }
 }
 
+export class DuplicateEmailError extends AppError {
+  constructor(message = 'Email is already registered.') {
+    super(message, 409);
+  }
+}
+
+export class InvalidCredentialsError extends AppError {
+  constructor(message = 'Invalid email or password.') {
+    super(message, 401);
+  }
+}
+
+export class InvalidTokenError extends AppError {
+  constructor(message = 'Invalid or expired token.') {
+    super(message, 403);
+  }
+}
+
+export class ValidationError extends AppError {
+  constructor(message = 'Validation failed.', errors?: unknown[]) {
+    super(message, 400, errors);
+  }
+}
+
 export const errorHandler = (
   err: Error | AppError,
   req: Request,

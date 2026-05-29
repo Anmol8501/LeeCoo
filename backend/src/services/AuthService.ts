@@ -2,7 +2,12 @@ import { AppDataSource } from '../config/database';
 import { User } from '../models/User';
 import { PasswordService } from './PasswordService';
 import { JwtService } from './JwtService';
-import { AppError } from '../middleware/errorHandler';
+import {
+  AppError,
+  DuplicateEmailError,
+  InvalidCredentialsError,
+  InvalidTokenError
+} from '../middleware/errorHandler';
 import { RegisterBody, AuthDataResponse, AuthUserResponse } from '../types/auth.types';
 
 export class AuthService {
@@ -27,14 +32,14 @@ export class AuthService {
     // Check if user already exists by email
     const existingEmail = await this.userRepository.findOne({ where: { email } });
     if (existingEmail) {
-      throw new AppError('Email is already registered.', 409);
+      throw new DuplicateEmailError('Email is already registered.');
     }
 
     // Check if user already exists by roll number (only for students/teachers if roll_no is provided)
     if (roll_no) {
       const existingRollNo = await this.userRepository.findOne({ where: { roll_no } });
       if (existingRollNo) {
-        throw new AppError('Roll number is already registered.', 409);
+        throw new DuplicateEmailError('Roll number is already registered.');
       }
     }
 
@@ -75,7 +80,7 @@ export class AuthService {
     // Find user by email
     const user = await this.userRepository.findOne({ where: { email } });
     if (!user) {
-      throw new AppError('Invalid email or password.', 401);
+      throw new InvalidCredentialsError();
     }
 
     if (!user.is_active) {
@@ -85,7 +90,7 @@ export class AuthService {
     // Compare passwords
     const isPasswordMatch = await PasswordService.comparePassword(password, user.password_hash);
     if (!isPasswordMatch) {
-      throw new AppError('Invalid email or password.', 401);
+      throw new InvalidCredentialsError();
     }
 
     // Update last login timestamp
@@ -107,7 +112,12 @@ export class AuthService {
    * Refreshes access token using a valid refresh token.
    */
   public static async refreshAccessToken(token: string): Promise<{ token: string }> {
-    const payload = JwtService.verifyRefreshToken(token);
+    let payload;
+    try {
+      payload = JwtService.verifyRefreshToken(token);
+    } catch (err) {
+      throw new InvalidTokenError('Invalid or expired refresh token.');
+    }
     
     const user = await this.userRepository.findOne({ where: { id: payload.id } });
     if (!user) {

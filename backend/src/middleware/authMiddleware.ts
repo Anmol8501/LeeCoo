@@ -38,17 +38,3 @@ export const authenticateJWT = (
     next(new AppError('Invalid or expired token.', 403));
   }
 };
-
-export const requireRole = (roles: Array<'student' | 'teacher' | 'admin'>) => {
-  return (req: Request, _res: Response, next: NextFunction): void => {
-    if (!req.user) {
-      return next(new AppError('Unauthorized.', 401));
-    }
-
-    if (!roles.includes(req.user.role)) {
-      return next(new AppError('Forbidden. Insufficient permissions.', 403));
-    }
-
-    next();
-  };
-};
