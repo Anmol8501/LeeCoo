@@ -10,14 +10,16 @@ import authRoutes from './auth.routes';
 router.use('/auth', authRoutes);
 
 // Day 3: Learning routes
-// router.use('/topics', topicRoutes);
-// router.use('/subtopics', subtopicRoutes);
+import topicRoutes from './topics.routes';
+import subtopicRoutes from './subtopics.routes';
+router.use('/topics', topicRoutes);
+router.use('/subtopics', subtopicRoutes);
 
-// Day 4: Questions routes
-// router.use('/questions', questionRoutes);
-
-// Day 5: Submissions routes
-// router.use('/submissions', submissionRoutes);
+// Day 3-4: Questions & Submissions routes
+import questionRoutes from './questions.routes';
+import submissionRoutes from './submissions.routes';
+router.use('/questions', questionRoutes);
+router.use('/submissions', submissionRoutes);
 
 // Day 6: Sheets routes
 // router.use('/sheets', sheetRoutes);
@@ -32,3 +34,4 @@ router.use('/auth', authRoutes);
 // router.use('/dashboard', dashboardRoutes);
 
 export default router;
+
